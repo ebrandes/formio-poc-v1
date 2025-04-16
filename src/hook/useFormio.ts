@@ -2,7 +2,7 @@
 import { Formio } from "formiojs";
 import { useEffect } from "react";
 
-const baseUrl = import.meta.env.VITE_FORMIO_API_URL; // seu formio backend
+const baseUrl = import.meta.env.VITE_FORMIO_API_URL;
 
 export const useFormio = () => {
   Formio.setBaseUrl(baseUrl);
