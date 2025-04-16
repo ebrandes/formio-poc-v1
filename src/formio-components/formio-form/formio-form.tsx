@@ -41,7 +41,7 @@ const FormioForm = ({ formKey, onSubmit }: Props) => {
     <div className="w-full formio-wrapper">
       <Form
         //Todo: Trocar pelo path,
-        src={`http://localhost:3001/form/${formPath}`}
+        src={`http://localhost:3001/${formPath}`}
         onSubmit={(submission) => {
           console.log("Dados enviados:", submission);
           onSubmit(submission);
