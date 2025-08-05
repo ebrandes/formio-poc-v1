@@ -70,3 +70,78 @@
 
 // // Sobrescreve o componente nativo 'textfield'
 // Components.setComponent("textfield", PrimeTextField);
+
+// TailwindTextField.tsx
+// import React from "react";
+// import { TextFieldComponent } from "formiojs/components/textfield/TextField";
+// import { Components } from "formiojs";
+
+// export class TailwindTextField extends TextFieldComponent {
+//   static schema(...extend: any[]) {
+//     return TextFieldComponent.schema({
+//       type: "textfield",
+//       label: "Tailwind Input",
+//       key: "textfield",
+//       ...extend,
+//     });
+//   }
+
+//   static get builderInfo() {
+//     return {
+//       title: "Tailwind Input",
+//       icon: "terminal",
+//       group: "basic",
+//       documentation: "/userguide/#textfield",
+//       weight: 0,
+//       schema: TailwindTextField.schema(),
+//     };
+//   }
+
+//   attachReact(element: any) {
+//     this.reactInstance = this.reactRender(
+//       <TailwindInput
+//         value={this.dataValue}
+//         label={this.component.label}
+//         placeholder={this.component.placeholder}
+//         disabled={this.component.disabled}
+//         onChange={(val: string) => this.updateValue(val)}
+//         name={this.component.key}
+//       />,
+//       element
+//     );
+//   }
+// }
+
+// const TailwindInput = ({
+//   value,
+//   onChange,
+//   label,
+//   placeholder,
+//   disabled,
+//   name,
+// }: any) => {
+//   return (
+//     <div className="mb-4">
+//       {label && (
+//         <label
+//           htmlFor={name}
+//           className="block text-sm font-medium text-gray-700"
+//         >
+//           {label}
+//         </label>
+//       )}
+//       <input
+//         id={name}
+//         value={value || ""}
+//         onChange={(e) => onChange(e.target.value)}
+//         placeholder={placeholder}
+//         disabled={disabled}
+//         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+//         type="text"
+//       />
+//     </div>
+//   );
+// };
+
+// // Replace default 'textfield'
+// Components.setComponent("textfield", TailwindTextField);

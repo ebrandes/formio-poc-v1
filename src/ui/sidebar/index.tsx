@@ -6,14 +6,19 @@ export function Sidebar() {
 
   const items = [
     {
-      label: "Dashboard",
-      icon: "pi pi-fw pi-home",
+      label: "Forms Gallery",
+      icon: "pi pi-fw pi-file-edit",
       command: () => navigate("/"),
     },
     {
-      label: "Configurações",
+      label: "Camunda Dashboard",
+      icon: "pi pi-fw pi-home",
+      command: () => navigate("/dashboard"),
+    },
+    {
+      label: "Formio Admin",
       icon: "pi pi-fw pi-cog",
-      command: () => navigate("/settings"),
+      command: () => window.open("http://localhost:3001", "_blank"),
     },
   ];
 

@@ -1,7 +1,7 @@
 import { useContext, createContext, useRef } from "react";
 import { Toast } from "primereact/toast";
 
-const ToastContext = createContext<React.RefObject<Toast> | null>(null);
+const ToastContext = createContext<React.RefObject<Toast | null> | null>(null);
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const toastRef = useRef<Toast>(null);

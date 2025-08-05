@@ -1,0 +1,84 @@
+services:
+  # MongoDB Database for Formio
+  mongo-ce:
+    image: mongo
+    container_name: formio-mongo-ce
+    restart: unless-stopped
+    volumes:
+      - "./data/db:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    networks:
+      - formio-ce
+
+  # Formio API Server
+  formio-ce:
+    image: formio/formio:rc
+    container_name: formio-ce
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      DEBUG: formio:*
+      ROOT_EMAIL: ${FORMIO_ADMIN_EMAIL:-admin@example.com}
+      ROOT_PASSWORD: ${FORMIO_ADMIN_PASSWORD:-CHANGEME}
+      NODE_CONFIG: |
+        {
+          "mongo": "mongodb://mongo-ce:27017/formio-ce",
+          "port": 3001,
+          "jwt": {
+            "secret": "${JWT_SECRET:-CHANGEME}"
+          }
+        }
+    networks:
+      - formio-ce
+    depends_on:
+      - mongo-ce
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # React Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: formio-web
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_FORMIO_API_URL=http://localhost:3001
+      - VITE_FORMIO_PROJECT_URL=http://localhost:3001
+    depends_on:
+      - formio-ce
+    networks:
+      - formio-ce
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+
+  # Form initialization service
+  formio-init:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.init
+    container_name: formio-init
+    depends_on:
+      - formio-ce
+    environment:
+      - FORMIO_API_URL=http://formio-ce:3001
+      - ADMIN_EMAIL=${FORMIO_ADMIN_EMAIL:-admin@example.com}
+      - ADMIN_PASSWORD=${FORMIO_ADMIN_PASSWORD:-CHANGEME}
+    networks:
+      - formio-ce
+    restart: "no"
+
+networks:
+  formio-ce:
+    driver: bridge

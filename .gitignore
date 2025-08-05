@@ -7,15 +7,28 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Build outputs
 dist
 dist-ssr
+build
 *.local
+
+# Environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -23,3 +36,160 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# Docker
+data/
+docker/data/
+*.pid
+*.seed
+*.pid.lock
+
+# MongoDB data
+data/db/
+mongo-data/
+
+# Testing
+coverage
+*.lcov
+.nyc_output
+
+# TypeScript
+*.tsbuildinfo
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Cache directories
+.npm
+.eslintcache
+.stylelintcache
+.parcel-cache
+.cache
+.next
+.nuxt
+.vuepress/dist
+.serverless/
+.fusebox/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Debug files
+*.map
+*.map.json
+
+# Formio specific
+formio-exports/
+formio-uploads/
+submissions/
+
+# Camunda specific
+camunda-data/
+
+# IDE specific
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Mac specific
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows specific
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux specific
+.directory
+.Trash-*
+.nfs*
+
+# Python (if any scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Certificates and keys
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Logs and databases
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.sql
+*.sqlite
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.env.backup
+.env.production
+.history
+.vscode-test
+*.code-workspace

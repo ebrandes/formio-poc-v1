@@ -1,5 +1,4 @@
 import { formatDistanceToNow } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { Tag } from "primereact/tag";
@@ -21,26 +20,26 @@ export const DashboardPage = () => {
       const updatedTasks = await getTasks();
       const updatedTask = updatedTasks.find((t) => t.id === taskId);
       setSelectedTask(updatedTask || null);
-      show({
+      show?.({
         severity: "success",
-        summary: "Sucesso",
-        detail: "Tarefa reivindicada com sucesso",
+        summary: "Success",
+        detail: "Task claimed successfully",
       });
     } catch (err) {
-      console.error("Erro ao reivindicar", err);
-      show({
+      console.error("Error claiming task", err);
+      show?.({
         severity: "error",
-        summary: "Erro",
-        detail: "Erro ao reivindicar tarefa",
+        summary: "Error",
+        detail: "Error claiming task",
       });
     }
   };
 
   const sortOptions = [
-    { label: "Mais antiga e não atribuída", value: "oldest-unassigned" },
-    { label: "Mais recente", value: "newest" },
-    { label: "Por nome", value: "name" },
-    { label: "Por responsável", value: "assignee" },
+    { label: "Oldest unassigned first", value: "oldest-unassigned" },
+    { label: "Newest first", value: "newest" },
+    { label: "By name", value: "name" },
+    { label: "By assignee", value: "assignee" },
   ];
 
   const sortedTasks = [...tasks].sort((a, b) => {
@@ -64,16 +63,16 @@ export const DashboardPage = () => {
     }
   });
 
-  if (!tasks) return <p className="p-4">Carregando tarefas...</p>;
+  if (!tasks) return <p className="p-4">Loading tasks...</p>;
 
   return (
     <div className="flex flex-col w-full md:h-[100vh] md:flex-row">
       <aside className="flex flex-col w-full md:h-[100vh] h-[50vh] overflow-y-auto  md:border-r p-4 md:w-1/3 lg:w-1/4">
-        <h2 className="mb-4 text-lg font-semibold">Tarefas ({tasks.length})</h2>
+        <h2 className="mb-4 text-lg font-semibold">Tasks ({tasks.length})</h2>
 
         <div className="mb-4">
           <label className="block mb-1 text-sm text-gray-700">
-            Ordenar por:
+            Sort by:
           </label>
           <Dropdown
             value={sortOption}
@@ -97,20 +96,19 @@ export const DashboardPage = () => {
                   <span className="font-medium">{task.name}</span>
                   {task.assignee && (
                     <span className="text-xs text-gray-500">
-                      Por: {task.assignee}
+                      Assigned to: {task.assignee}
                     </span>
                   )}
                 </div>
                 <Tag
-                  value={task.assignee ? "Atribuída" : "Livre"}
+                  value={task.assignee ? "Assigned" : "Available"}
                   severity={task.assignee ? "success" : "warning"}
                 />
               </div>
               <div className="text-sm text-gray-500">
-                Criada há{" "}
+                Created{" "}
                 {formatDistanceToNow(new Date(task.created), {
                   addSuffix: true,
-                  locale: ptBR,
                 })}
               </div>
             </li>
@@ -124,20 +122,20 @@ export const DashboardPage = () => {
           <div>
             <h2 className="mb-2 text-2xl font-bold">{selectedTask.name}</h2>
             <p className="mb-4 text-gray-600">
-              <strong>Estado:</strong> {selectedTask.taskState}
+              <strong>State:</strong> {selectedTask.taskState}
               <br />
-              <strong>Formulário:</strong> {selectedTask.formKey || "Nenhum"}
+              <strong>Form:</strong> {selectedTask.formKey || "None"}
               <br />
               {selectedTask.assignee && (
                 <>
-                  <strong>Responsável:</strong> {selectedTask.assignee}
+                  <strong>Assignee:</strong> {selectedTask.assignee}
                 </>
               )}
             </p>
 
             {!selectedTask.assignee && (
               <Button
-                label="Reivindicar tarefa"
+                label="Claim task"
                 icon="pi pi-user-plus"
                 onClick={() => handleClaim(selectedTask.id)}
                 className="mb-4 p-button-sm"
@@ -153,16 +151,16 @@ export const DashboardPage = () => {
                       await submitTaskForm(selectedTask.id, submission);
                       await getTasks();
                       setSelectedTask(null);
-                      show({
+                      show?.({
                         severity: "success",
-                        summary: "Formulário enviado",
-                        detail: "Dados enviados com sucesso.",
+                        summary: "Form submitted",
+                        detail: "Data submitted successfully.",
                       });
                     } catch (error) {
-                      show({
+                      show?.({
                         severity: "error",
-                        summary: "Erro no envio",
-                        detail: "Falha ao enviar o formulário.",
+                        summary: "Submission error",
+                        detail: "Failed to submit form.",
                       });
                     }
                   }}
@@ -172,7 +170,7 @@ export const DashboardPage = () => {
           </div>
         ) : (
           <p className="text-gray-500">
-            Selecione uma tarefa para ver os detalhes e o formulário.
+            Select a task to view details and form.
           </p>
         )}
       </section>

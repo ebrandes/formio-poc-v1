@@ -5,6 +5,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { DashboardPage } from "./pages/dashboard";
+import FormsGallery from "./pages/forms-gallery";
 import { Header } from "./ui/header";
 import { Sidebar } from "./ui/sidebar";
 
@@ -19,8 +20,9 @@ export default function App() {
           <Sidebar />
           <main className="flex-1 p-4">
             <Routes>
-              <Route path="/" element={<DashboardPage />} />
-              {/* <Route path="/settings" element={<Settings />} /> */}
+              <Route path="/" element={<FormsGallery />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/forms" element={<FormsGallery />} />
             </Routes>
           </main>
         </div>

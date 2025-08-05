@@ -1,0 +1,732 @@
+[
+  {
+    "title": "Example Form 1",
+    "name": "example1",
+    "path": "example1",
+    "type": "form",
+    "display": "form",
+    "tags": ["example", "demo"],
+    "components": [
+      {
+        "label": "Name",
+        "tableView": true,
+        "validate": {
+          "required": true
+        },
+        "key": "name",
+        "type": "textfield",
+        "input": true,
+        "placeholder": "Enter your name"
+      },
+      {
+        "label": "Age",
+        "mask": false,
+        "tableView": false,
+        "delimiter": false,
+        "requireDecimal": false,
+        "inputFormat": "plain",
+        "truncateMultipleSpaces": false,
+        "validate": {
+          "min": 1,
+          "max": 120
+        },
+        "key": "age",
+        "type": "number",
+        "input": true
+      },
+      {
+        "label": "Favorite Color",
+        "widget": "choicesjs",
+        "tableView": true,
+        "data": {
+          "values": [
+            {"label": "Red", "value": "red"},
+            {"label": "Blue", "value": "blue"},
+            {"label": "Green", "value": "green"},
+            {"label": "Yellow", "value": "yellow"}
+          ]
+        },
+        "key": "favoriteColor",
+        "type": "select",
+        "input": true
+      },
+      {
+        "label": "Submit",
+        "showValidations": false,
+        "theme": "primary",
+        "tableView": false,
+        "key": "submit",
+        "type": "button",
+        "input": true
+      }
+    ]
+  },
+  {
+    "title": "Example Form 2",
+    "name": "example2",
+    "path": "example2",
+    "type": "form",
+    "display": "form",
+    "tags": ["example", "demo"],
+    "components": [
+      {
+        "label": "Company Name",
+        "tableView": true,
+        "validate": {
+          "required": true
+        },
+        "key": "companyName",
+        "type": "textfield",
+        "input": true
+      },
+      {
+        "label": "Number of Employees",
+        "widget": "choicesjs",
+        "tableView": true,
+        "data": {
+          "values": [
+            {"label": "1-10", "value": "1-10"},
+            {"label": "11-50", "value": "11-50"},
+            {"label": "51-200", "value": "51-200"},
+            {"label": "201-500", "value": "201-500"},
+            {"label": "500+", "value": "500+"}
+          ]
+        },
+        "validate": {
+          "required": true
+        },
+        "key": "numberOfEmployees",
+        "type": "select",
+        "input": true
+      },
+      {
+        "label": "Industry",
+        "widget": "choicesjs",
+        "tableView": true,
+        "data": {
+          "values": [
+            {"label": "Technology", "value": "technology"},
+            {"label": "Healthcare", "value": "healthcare"},
+            {"label": "Finance", "value": "finance"},
+            {"label": "Education", "value": "education"},
+            {"label": "Retail", "value": "retail"},
+            {"label": "Other", "value": "other"}
+          ]
+        },
+        "key": "industry",
+        "type": "select",
+        "input": true
+      },
+      {
+        "label": "Description",
+        "autoExpand": false,
+        "tableView": true,
+        "key": "description",
+        "type": "textarea",
+        "input": true,
+        "rows": 3,
+        "placeholder": "Tell us about your company..."
+      },
+      {
+        "label": "Interested in Partnership",
+        "tableView": false,
+        "key": "interestedInPartnership",
+        "type": "checkbox",
+        "input": true,
+        "defaultValue": false
+      },
+      {
+        "label": "Submit",
+        "showValidations": false,
+        "theme": "primary",
+        "tableView": false,
+        "key": "submit",
+        "type": "button",
+        "input": true
+      }
+    ]
+  },
+  {
+    "title": "Contact Form",
+    "name": "contactForm",
+    "path": "contact",
+    "type": "form",
+    "display": "form",
+    "tags": ["common"],
+    "components": [
+      {
+        "label": "First Name",
+        "tableView": true,
+        "validate": {
+          "required": true,
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "key": "firstName",
+        "type": "textfield",
+        "input": true,
+        "placeholder": "Enter your first name"
+      },
+      {
+        "label": "Last Name",
+        "tableView": true,
+        "validate": {
+          "required": true,
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "key": "lastName",
+        "type": "textfield",
+        "input": true,
+        "placeholder": "Enter your last name"
+      },
+      {
+        "label": "Email",
+        "tableView": true,
+        "validate": {
+          "required": true,
+          "pattern": "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$",
+          "customMessage": "Please enter a valid email address"
+        },
+        "key": "email",
+        "type": "email",
+        "input": true,
+        "placeholder": "your.email@example.com"
+      },
+      {
+        "label": "Phone Number",
+        "tableView": true,
+        "validate": {
+          "pattern": "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$",
+          "customMessage": "Please enter a valid phone number"
+        },
+        "key": "phoneNumber",
+        "type": "phoneNumber",
+        "input": true,
+        "placeholder": "(123) 456-7890"
+      },
+      {
+        "label": "Subject",
+        "widget": "choicesjs",
+        "tableView": true,
+        "data": {
+          "values": [
+            {
+              "label": "General Inquiry",
+              "value": "general"
+            },
+            {
+              "label": "Technical Support",
+              "value": "support"
+            },
+            {
+              "label": "Sales",
+              "value": "sales"
+            },
+            {
+              "label": "Partnership",
+              "value": "partnership"
+            }
+          ]
+        },
+        "validate": {
+          "required": true
+        },
+        "key": "subject",
+        "type": "select",
+        "input": true
+      },
+      {
+        "label": "Message",
+        "autoExpand": false,
+        "tableView": true,
+        "validate": {
+          "required": true,
+          "minLength": 10,
+          "maxLength": 1000
+        },
+        "key": "message",
+        "type": "textarea",
+        "input": true,
+        "rows": 5,
+        "placeholder": "Enter your message here..."
+      },
+      {
+        "label": "Subscribe to Newsletter",
+        "tableView": false,
+        "defaultValue": false,
+        "key": "subscribe",
+        "type": "checkbox",
+        "input": true
+      },
+      {
+        "label": "Submit",
+        "showValidations": false,
+        "theme": "primary",
+        "tableView": false,
+        "key": "submit",
+        "type": "button",
+        "input": true,
+        "saveOnEnter": true
+      }
+    ]
+  },
+  {
+    "title": "Customer Survey",
+    "name": "surveyForm",
+    "path": "survey",
+    "type": "form",
+    "display": "form",
+    "tags": ["survey"],
+    "components": [
+      {
+        "label": "Personal Information",
+        "key": "personalInfo",
+        "type": "panel",
+        "title": "Personal Information",
+        "components": [
+          {
+            "label": "Full Name",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "fullName",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "Age Range",
+            "widget": "choicesjs",
+            "tableView": true,
+            "data": {
+              "values": [
+                {
+                  "label": "18-25",
+                  "value": "18-25"
+                },
+                {
+                  "label": "26-35",
+                  "value": "26-35"
+                },
+                {
+                  "label": "36-45",
+                  "value": "36-45"
+                },
+                {
+                  "label": "46-55",
+                  "value": "46-55"
+                },
+                {
+                  "label": "56+",
+                  "value": "56+"
+                }
+              ]
+            },
+            "validate": {
+              "required": true
+            },
+            "key": "ageRange",
+            "type": "select",
+            "input": true
+          }
+        ]
+      },
+      {
+        "label": "Service Rating",
+        "key": "serviceRating",
+        "type": "panel",
+        "title": "Service Rating",
+        "components": [
+          {
+            "label": "Overall Satisfaction",
+            "optionsLabelPosition": "right",
+            "inline": false,
+            "tableView": false,
+            "values": [
+              {
+                "label": "Very Satisfied",
+                "value": "verySatisfied",
+                "shortcut": ""
+              },
+              {
+                "label": "Satisfied",
+                "value": "satisfied",
+                "shortcut": ""
+              },
+              {
+                "label": "Neutral",
+                "value": "neutral",
+                "shortcut": ""
+              },
+              {
+                "label": "Dissatisfied",
+                "value": "dissatisfied",
+                "shortcut": ""
+              },
+              {
+                "label": "Very Dissatisfied",
+                "value": "veryDissatisfied",
+                "shortcut": ""
+              }
+            ],
+            "validate": {
+              "required": true
+            },
+            "key": "satisfaction",
+            "type": "radio",
+            "input": true
+          },
+          {
+            "label": "Would you recommend our service?",
+            "optionsLabelPosition": "right",
+            "inline": true,
+            "tableView": false,
+            "values": [
+              {
+                "label": "Yes",
+                "value": "yes",
+                "shortcut": ""
+              },
+              {
+                "label": "No",
+                "value": "no",
+                "shortcut": ""
+              },
+              {
+                "label": "Maybe",
+                "value": "maybe",
+                "shortcut": ""
+              }
+            ],
+            "validate": {
+              "required": true
+            },
+            "key": "recommend",
+            "type": "radio",
+            "input": true
+          }
+        ]
+      },
+      {
+        "label": "Additional Comments",
+        "autoExpand": false,
+        "tableView": true,
+        "key": "comments",
+        "type": "textarea",
+        "input": true,
+        "rows": 4,
+        "placeholder": "Please share any additional feedback..."
+      },
+      {
+        "label": "Submit Survey",
+        "showValidations": false,
+        "theme": "primary",
+        "tableView": false,
+        "key": "submit",
+        "type": "button",
+        "input": true
+      }
+    ]
+  },
+  {
+    "title": "User Registration",
+    "name": "registrationForm",
+    "path": "registration",
+    "type": "form",
+    "display": "wizard",
+    "tags": ["registration"],
+    "components": [
+      {
+        "title": "Account Information",
+        "label": "Page 1",
+        "type": "panel",
+        "key": "page1",
+        "components": [
+          {
+            "label": "Username",
+            "tableView": true,
+            "validate": {
+              "required": true,
+              "minLength": 3,
+              "maxLength": 20,
+              "pattern": "^[a-zA-Z0-9_]+$",
+              "customMessage": "Username must contain only letters, numbers, and underscores"
+            },
+            "key": "username",
+            "type": "textfield",
+            "input": true,
+            "placeholder": "Choose a username"
+          },
+          {
+            "label": "Email Address",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "email",
+            "type": "email",
+            "input": true,
+            "placeholder": "your.email@example.com"
+          },
+          {
+            "label": "Password",
+            "tableView": false,
+            "validate": {
+              "required": true,
+              "minLength": 8,
+              "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+              "customMessage": "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
+            },
+            "key": "password",
+            "type": "password",
+            "input": true,
+            "protected": true,
+            "placeholder": "Enter a strong password"
+          },
+          {
+            "label": "Confirm Password",
+            "tableView": false,
+            "validate": {
+              "required": true,
+              "custom": "valid = (input === data.password) ? true : 'Passwords must match';"
+            },
+            "key": "confirmPassword",
+            "type": "password",
+            "input": true,
+            "protected": true,
+            "placeholder": "Re-enter your password"
+          }
+        ]
+      },
+      {
+        "title": "Personal Details",
+        "label": "Page 2",
+        "type": "panel",
+        "key": "page2",
+        "components": [
+          {
+            "label": "First Name",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "firstName",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "Last Name",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "lastName",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "Date of Birth",
+            "tableView": false,
+            "enableMinDateInput": false,
+            "datePicker": {
+              "disableWeekends": false,
+              "disableWeekdays": false
+            },
+            "enableMaxDateInput": false,
+            "validate": {
+              "required": true
+            },
+            "key": "dateOfBirth",
+            "type": "datetime",
+            "input": true,
+            "widget": {
+              "type": "calendar",
+              "displayInTimezone": "viewer",
+              "locale": "en",
+              "useLocaleSettings": false,
+              "allowInput": true,
+              "mode": "single",
+              "enableTime": false,
+              "noCalendar": false,
+              "format": "yyyy-MM-dd",
+              "hourIncrement": 1,
+              "minuteIncrement": 1,
+              "time_24hr": false,
+              "minDate": null,
+              "disableWeekends": false,
+              "disableWeekdays": false,
+              "maxDate": null
+            }
+          },
+          {
+            "label": "Gender",
+            "widget": "choicesjs",
+            "tableView": true,
+            "data": {
+              "values": [
+                {
+                  "label": "Male",
+                  "value": "male"
+                },
+                {
+                  "label": "Female",
+                  "value": "female"
+                },
+                {
+                  "label": "Other",
+                  "value": "other"
+                },
+                {
+                  "label": "Prefer not to say",
+                  "value": "prefer_not_to_say"
+                }
+              ]
+            },
+            "key": "gender",
+            "type": "select",
+            "input": true
+          }
+        ]
+      },
+      {
+        "title": "Contact Information",
+        "label": "Page 3",
+        "type": "panel",
+        "key": "page3",
+        "components": [
+          {
+            "label": "Street Address",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "streetAddress",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "City",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "city",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "State/Province",
+            "tableView": true,
+            "validate": {
+              "required": true
+            },
+            "key": "state",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "Postal Code",
+            "tableView": true,
+            "validate": {
+              "required": true,
+              "pattern": "^[0-9]{5}(?:-[0-9]{4})?$",
+              "customMessage": "Please enter a valid postal code"
+            },
+            "key": "postalCode",
+            "type": "textfield",
+            "input": true
+          },
+          {
+            "label": "Country",
+            "widget": "choicesjs",
+            "tableView": true,
+            "data": {
+              "values": [
+                {
+                  "label": "United States",
+                  "value": "us"
+                },
+                {
+                  "label": "Canada",
+                  "value": "ca"
+                },
+                {
+                  "label": "United Kingdom",
+                  "value": "uk"
+                },
+                {
+                  "label": "Australia",
+                  "value": "au"
+                },
+                {
+                  "label": "Other",
+                  "value": "other"
+                }
+              ]
+            },
+            "validate": {
+              "required": true
+            },
+            "key": "country",
+            "type": "select",
+            "input": true
+          },
+          {
+            "label": "Phone Number",
+            "tableView": true,
+            "key": "phone",
+            "type": "phoneNumber",
+            "input": true
+          }
+        ]
+      },
+      {
+        "title": "Terms and Conditions",
+        "label": "Page 4",
+        "type": "panel",
+        "key": "page4",
+        "components": [
+          {
+            "label": "Terms of Service",
+            "editor": "",
+            "tableView": false,
+            "key": "termsContent",
+            "type": "content",
+            "input": false,
+            "html": "<div style='padding: 20px; background: #f5f5f5; border-radius: 5px; margin-bottom: 20px;'>\n<h4>Terms of Service</h4>\n<p>By registering for an account, you agree to:</p>\n<ul>\n<li>Provide accurate and complete information</li>\n<li>Maintain the security of your account</li>\n<li>Comply with all applicable laws and regulations</li>\n<li>Not use the service for any illegal or unauthorized purpose</li>\n<li>Accept all risks of unauthorized access to your information</li>\n</ul>\n<p>We reserve the right to terminate accounts that violate these terms.</p>\n</div>"
+          },
+          {
+            "label": "I agree to the Terms of Service",
+            "tableView": false,
+            "validate": {
+              "required": true
+            },
+            "key": "agreeToTerms",
+            "type": "checkbox",
+            "input": true,
+            "defaultValue": false
+          },
+          {
+            "label": "I agree to receive marketing communications",
+            "tableView": false,
+            "key": "marketingConsent",
+            "type": "checkbox",
+            "input": true,
+            "defaultValue": false
+          },
+          {
+            "label": "Complete Registration",
+            "showValidations": false,
+            "theme": "primary",
+            "tableView": false,
+            "key": "submit",
+            "type": "button",
+            "input": true,
+            "saveOnEnter": false
+          }
+        ]
+      }
+    ]
+  }
+]

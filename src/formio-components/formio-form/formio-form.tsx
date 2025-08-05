@@ -11,6 +11,9 @@ const FormioForm = ({ formKey, onSubmit }: Props) => {
   const [customReady, setCustomReady] = useState(false);
   const [formPath, setFormPath] = useState<string | null>(null);
 
+  // Get Formio API URL from environment variable or use default
+  const FORMIO_API_URL = import.meta.env.VITE_FORMIO_API_URL || "http://localhost:3001";
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "/formio.custom.js";
@@ -20,6 +23,10 @@ const FormioForm = ({ formKey, onSubmit }: Props) => {
         setCustomReady(true);
       }, 2000);
     };
+    script.onerror = () => {
+      console.warn("Custom components script not found, continuing without custom components");
+      setCustomReady(true);
+    };
     document.body.appendChild(script);
   }, []);
 
@@ -28,23 +35,30 @@ const FormioForm = ({ formKey, onSubmit }: Props) => {
       const url = new URL(formKey.replace("embedded:", "http://fake"));
       const path = url.searchParams.get("path");
       setFormPath(path);
+    } else if (formKey) {
+      // Handle direct form paths
+      setFormPath(formKey);
     }
   }, [formKey]);
 
-  if (!customReady) return <p>Carregando componentes...</p>;
+  if (!customReady) return <p>Loading components...</p>;
 
   if (!formPath) {
-    return <p className="text-gray-500">Formulário não encontrado.</p>;
+    return <p className="text-gray-500">Form not found.</p>;
   }
 
   return (
     <div className="w-full formio-wrapper">
       <Form
-        //Todo: Trocar pelo path,
-        src={`http://localhost:3001/${formPath}`}
+        src={`${FORMIO_API_URL}/${formPath}`}
         onSubmit={(submission) => {
-          console.log("Dados enviados:", submission);
+          console.log("Form submission:", submission);
           onSubmit(submission);
+        }}
+        options={{
+          noAlerts: false,
+          readOnly: false,
+          language: 'en'
         }}
       />
     </div>
