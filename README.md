@@ -34,7 +34,7 @@ cp .env.example .env
 
 # The default values work out of the box:
 # - Admin Email: admin@example.com
-# - Admin Password: CHANGEME
+# - Admin Password: CHANGEME (keep it simple for development)
 # - Formio API: http://localhost:3001
 ```
 

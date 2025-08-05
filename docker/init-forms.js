@@ -42,7 +42,7 @@ async function waitForFormio(maxRetries = 60, delay = 2000) {
 }
 
 // Wait for admin user to be created
-async function waitForAdminUser(maxRetries = 10, delay = 3000) {
+async function waitForAdminUser(maxRetries = 20, delay = 5000) {
   console.log('Waiting for admin user to be created...');
   
   for (let i = 0; i < maxRetries; i++) {
@@ -174,7 +174,7 @@ async function initialize() {
     
     // Step 2: Give Formio time to initialize
     console.log('Waiting for Formio to fully initialize...');
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await new Promise(resolve => setTimeout(resolve, 10000));
     
     // Step 3: Try to login as admin
     const token = await waitForAdminUser();
